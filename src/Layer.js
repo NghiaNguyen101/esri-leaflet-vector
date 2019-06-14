@@ -104,7 +104,10 @@ export var Layer = L.Layer.extend({
     }
 
     // set the background color of the map to the background color of the tiles
-    map.getContainer().style.background = this._mapboxGL.options.style.layers[0].paint['background-color'];
+    // Start Edit
+    // map.getContainer().style.background = this._mapboxGL.options.style.layers[0].paint['background-color'];
+    map.getContainer().style.background = this._mapboxGL.options.style.layers.slice(-1)[0].paint['background-color'];
+    // End Edit
     this._mapboxGL.addTo(map, this);
   }
 });

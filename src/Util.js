@@ -60,6 +60,20 @@ export function formatStyle (style, metadata, styleUrl) {
     maxzoom: 15
   };
 
+  // Start Edit
+  style.sources.basemap = {
+    type: "raster",
+    tileSize: 256,
+    tiles: ["https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"]
+  };
+
+  style.layers.unshift({
+      id: "basemap",
+      type: "raster",
+      source: "basemap"
+  });
+  // End Edit
+
   if (style.glyphs.indexOf('http') === -1) {
     // set paths to sprite and glyphs
     style.glyphs = styleUrl.replace('styles/root.json', style.glyphs.replace('../', ''));

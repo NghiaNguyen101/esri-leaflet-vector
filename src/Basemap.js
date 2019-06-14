@@ -88,7 +88,10 @@ export var Basemap = L.Layer.extend({
     // https://github.com/mapbox/mapbox-gl-js/issues/4000
 
     // set the background color of the map to the background color of the tiles
-    map.getContainer().style.background = this._mapboxGL.options.style.layers[0].paint['background-color'] || '#e1e3d0';
+    // Start Edit
+    // map.getContainer().style.background = this._mapboxGL.options.style.layers[0].paint['background-color'] || '#e1e3d0';
+    map.getContainer().style.background = this._mapboxGL.options.style.layers.slice(-1)[0].paint['background-color'];
+    // End Edit
 
     map.on('moveend', Util._updateMapAttribution);
     this._mapboxGL.addTo(map, this);
